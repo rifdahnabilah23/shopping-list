@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Username : {{name}}</a>
+            <a class="nav-link" href="{% url 'main:logout' %}">Logout</a>
+            </div>
+        </div>
+        </div>
+    </nav>
     <h1>Shopping List Page</h1>
 
     <h5>Name:</h5>
@@ -23,6 +37,18 @@
                 <td>{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product.date_added}}</td>
+                <td>
+                    <a href="{% url 'main:edit_product' product.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                    <a href="{% url 'main:delete_product' product.pk %}">
+                          <button>
+                              Delete
+                          </button>
+                      </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
@@ -34,34 +60,15 @@
             Add New Product
         </button>
     </a>
-    <a href="{% url 'main:logout' %}">
+    <!-- <a href="{% url 'main:logout' %}">
         <button>
             Logout
         </button>
-    </a>
+    </a> -->
     
     {% endblock content %}
 
-
-
-
- # 'buah1': 'Melon', 
-        # 'buah2': 'Strawberry',
-        # 'buah3': 'Alpukat',
-        # 'stok1': 20, 
-        # 'stok2': 15,
-        # 'stok3': 25,
-        # 'harga1': 20000, 
-        # 'harga2': 12000,
-        # 'harga3': 10000,
-        # 'keterangan1': 'Buah Melon yang kaya akan nutrisi mengandung kalium, asam folat, protein, vitamin C, dan magnesium.',
-        # 'keterangan2': 'Buah Strawberry yang kaya akan antioksidan, vitamin C, kalium, vitamin B9(asam folat), dan mangan.',
-        # 'keterangan3': 'Buah Alpukat mengandung  nutrisi, vitamin B, vitamin K, kalium, tembaga, vitamin E, dan vitamin C.',
-
-
-
-
-<table border="1">
+<!-- <table border="1">
         <tr>
             <th colspan="2" bgcolor="yellow">Daftar Produk</th>
         </tr>
@@ -86,4 +93,4 @@
             </tr>
         {% endfor %}
         
-    </table>
+    </table> -->
